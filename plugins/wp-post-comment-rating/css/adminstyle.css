@@ -1,0 +1,51 @@
+/* CSS Document */
+
+.wpcsr_wrapper span {
+	display:inline-block;
+}
+.wpcsr_wrapper h2 {
+	background-color: #0085baab;
+    margin: 0;
+    border-bottom: 3px solid #eee;
+    width: 95%;
+    padding: 9px;
+    margin-top: 10px;
+	font-weight: bold;
+	color: #fff;
+}
+span#default {
+	font-size: 9px;
+    color: #7b7878;
+}
+.row-outer {
+	margin:10px 0px 10px 0px;
+	float: left;
+    width: 100%;
+}
+.left-area{
+    width: 94%;
+    float: left;
+    background-color: #fff;
+    padding: 5px 15px;
+}
+.col-1 {
+	width:35%;
+	float:left;
+}
+.col-2 {
+	float:left;
+}
+.col-2 img{
+	vertical-align:middle;
+}
+.left-area p.submit{
+	clear:both;
+}
+.left-area .wp-picker-container .wp-color-result.button {
+    height: 28px;
+    margin: 0 6px 0px 0;
+}
+.col-2 .averagerating_info{  font-size: 10px;}
+.donate-message	{font-size: 11px;}
+.col-2 .imgrow{    margin-bottom: 5px;}
+.col-2 .imgrow input[type=radio]{    margin-top: 3px;}
