@@ -111,7 +111,7 @@ function get_location_of_event($event_id){
 	global $wpdb;
 	$location = get_post_meta($event_id, '_location_id', true);
 	# code...
-	$loc = [];
+	$loc = array();
 	if(!empty($location)){
 		$location_data = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."em_locations WHERE location_id = ".$location);
 		$location_name = $location_data[0]->location_name;
@@ -133,7 +133,7 @@ function get_location_of_event($event_id){
 function get_categories_of_posttype($event_id, $taxonomy){
 	global $wpdb;
 	$terms = get_the_terms( $event_id, $taxonomy );
-	$cat = [];
+	$cat = array();
     if ( $terms && ! is_wp_error( $terms ) ) {                
         $term_slugs_array = array();
         foreach ( $terms as $term ) {
@@ -566,9 +566,9 @@ function get_location_of_place($place_id){
 	return $location;
 	
 }
-
-
-
+/*
+* REMOVE THE VIEW COLUMN
+*/
 add_filter( 'post_row_actions', 'mycustomtheme_remove_myposttype_row_actions' );
 function mycustomtheme_remove_myposttype_row_actions( $action )
 {
