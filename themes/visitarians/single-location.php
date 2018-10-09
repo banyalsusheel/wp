@@ -33,8 +33,7 @@ get_header(); ?>
 
 		       	<?php 
 		       	// LOCATION
-		       	$location_data = get_location_of_place(get_the_ID());
-		       	// print_r($location_data);
+		       	$location_data = get_location_of_posttype(get_the_ID());
 		       	if(!empty($location_data['location'])){?>
 		       		<div class="event-location"><?php echo $location_data['location'];?></div> | 
 		       	<?php } ?>
@@ -46,12 +45,12 @@ get_header(); ?>
 		        <!-- CONTENT -->
 		        <div class="place-content">
 					<?php the_content();?>
+		        	<?php //echo $post->post_content;?>
 		        </div>
 				
 		        <!-- RECOMMENDED EVENT SECTION -->
 				<div class="place-recommended">
-					
-					
+					<ul class="place-recommended-ul">
 					<?php 
 			        	$args = [
 						    'post_type' => 'location',
@@ -66,15 +65,7 @@ get_header(); ?>
 						    ],
 						];
 						$loop = new WP_Query($args);
-						$total = $loop->post_count;
-						if($total > 0){?>
-							<h2 class="main-heading">Recommended <span>Places</span></h2>
-						<?php } ?>
 						
-						<ul class="place-recommended-ul">
-
-						<?php 
-
 						while ( $loop->have_posts() ) : $loop->the_post(); 
 							$categories = get_categories_of_posttype($post->ID, 'place_categories');
 							?>	
@@ -93,7 +84,7 @@ get_header(); ?>
 									<a href="<?php echo esc_url( get_permalink() )?>" title="<?php the_title();?>"><?php the_title();?></a>
 
 									<?php 
-									$location_data = get_location_of_place(get_the_ID());
+									$location_data = get_location_of_posttype(get_the_ID());
 							       	if(!empty($location_data['location'])){?>
 							       		<div class="place-location"><?php echo $location_data['location'];?></div> | 
 							       	<?php } ?>

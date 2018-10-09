@@ -57,7 +57,7 @@ get_header(); ?>
 
 		        <!-- CONTENT -->
 		        <div class="event-content">
-		        	<?php echo $post->post_content;?>
+					<?php the_content();?>
 		        </div>
 		        <div> Event organizer : <?php echo $event_organizer;?></div>
 				
