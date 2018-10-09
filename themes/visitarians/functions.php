@@ -442,7 +442,6 @@ function create_place_category_taxonomies() {
 		'labels'            => $labels,
 		'show_ui'           => true,
 		'show_in_menu' 		=> true,
-	//  'show_in_nav_menus' => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
 		'label' 			=> __('Place Categories','visitarians'),
@@ -576,4 +575,16 @@ function mycustomtheme_remove_myposttype_row_actions( $action )
         unset($action['view']);
     }
     return $action;
+}
+
+remove_filter( 'the_content', 'em_content' );
+remove_filter( 'the_content', 'EM_Location_Post::the_content' );
+remove_filter( 'the_content', 'EM_Event_Post::the_content' );
+
+function get_filters_for( $hook = '' ) {
+    global $wp_filter;
+    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
+        return;
+
+    return $wp_filter[$hook];
 }
