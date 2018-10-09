@@ -45,7 +45,7 @@ get_header(); ?>
 
 		        <!-- CONTENT -->
 		        <div class="place-content">
-		        	<?php echo $post->post_content;?>
+					<?php the_content();?>
 		        </div>
 				
 		        <!-- RECOMMENDED EVENT SECTION -->
