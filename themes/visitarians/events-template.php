@@ -3,7 +3,7 @@ get_header(); ?>
 	<aside class="left-side">
 		<h2 class="main-heading">Events Filter<span></span></h2>
 		<?php get_sidebar('left-event-filters');?>		
-		<?php get_sidebar('left-place-filters');?>
+		<?php get_sidebar('left-location-filters');?>
 		<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 	</aside>
 	<?php get_sidebar('right-events');?>
@@ -48,17 +48,28 @@ get_header(); ?>
 				$total = $loop_event->post_count;
 				$rating = average_rating(get_the_ID());?>
 				<li>
-					<div class="image"><?php echo $image;?></div>
-					<div class="text">
-						<h2 class="heading"><a href="<?php echo esc_url( get_permalink() )?>"><?php the_title();?></a></h2>
-						<p><?php echo $rating;?></p>
-						<p><?php echo $dates;?></p>
-				       	<?php if(!empty($location_data)){?>
-				       		<p><?php echo $location_data['location'];?></p>
-				       	<?php } ?>
-				       	<span class="event-type"><?php echo $categories['categories_link']; ?></span>
-					   
-						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more"></a></div>
+					<div class="sub-boxes list-textBoxes">
+						<div class="image"><?php echo $image;?></div>
+						<div class="text">
+							<h2 class="heading"><a href="<?php echo esc_url( get_permalink() )?>"><?php the_title();?></a> </h2>
+							<span class="pull-right"><?php echo $rating;?></span>
+							<div class="event-DateLocation">
+								<div class="DateLocation-inner">
+									<div class="date-location">
+										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+										<?php echo $dates;?>
+									</div>
+									<?php if(!empty($location_data)){?>
+									<div class="date-location">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+									<?php echo $location_data['location'];?>
+									</div>								
+									<?php } ?>
+									<span class="event-type"><?php echo $categories['categories_link']; ?></span>
+							   </div>
+							<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more DateLocation-iconLink"></a></div>
+						</div>
+						</div>
 					</div>
 				</li>
 			<?php }?>

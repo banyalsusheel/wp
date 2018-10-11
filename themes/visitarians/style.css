@@ -2846,11 +2846,11 @@ h6 {
 .navbar-brand{margin-top:-25px;}
 .container {max-width: 100%;}
 .row.fullscreen {padding-top: 50px;}
-.content-area{width:97%; display:table; margin:50px auto; color:#212121; font-size:18px; overflow:hidden;}
+.content-area{width:97%;  margin:50px auto; color:#212121; font-size:18px; overflow:hidden;}
 .content-area a{color:#ff681a;}
 .content-area a:hover{color:#000;}
-.left-side, .right-side{display:table-cell; width:300px; vertical-align:top;}
-.right-side{float:right;}
+.left-side, .right-side{float:left; width:250px; vertical-align:top;}
+.right-side{float:right !important;}
 .visit-event-place{border-radius:10px; overflow:hidden; background:#333; margin-bottom:20px;}
 .visit-event-place li{border-bottom:1px solid #fff; overflow:hidden; position:relative;}
 .visit-event-place li img{opacity:0.5;  transition:all 0.5s ease 0s;}
@@ -2863,11 +2863,11 @@ h6 {
 .main-heading{font-size:30px; color:#ff681a; margin-bottom:15px; font-family: 'brandon_grotesquemedium';}
 .main-heading span{color:#000; position:relative; font-family: 'brandon_grotesquelight';}
 .main-heading span:after{width:75px; height:1px; content:'';background:#000; position:absolute; left:100%; margin: 20px 0 0 10px;}
-.middle-content{padding:0 30px; font-weight:400; display:table;}
+.middle-content{padding:0 30px; font-weight:400;margin:0 250px;}
 .middle-content .main-box{background:#fff; border-radius:15px; overflow:hidden; display:table; width:100%; margin-bottom:30px;}
 .middle-content .main-box .image{width:250px; display:table-cell; vertical-align:top;}
 .middle-content .main-box .text{padding:20px; font-size:18px;}
-.middle-content .main-box .text .heading{font-size:28px; margin-bottom:20px; font-weight: normal;}
+.middle-content .main-box .text .heading{font-size:28px; margin-bottom:20px; font-weight: normal; }
 .read-more{font-family: 'brandon_grotesquebold'; font-size:18px; color:#ff681a; font-weight: normal; background:url(assets/img/arrow.png) no-repeat right center; padding:0 20px 0 0;}
 
 .middle-content .sub-boxes{background:#fff; border-radius:15px; overflow:hidden; width:100%; margin-bottom:30px; padding:15px;}
@@ -2931,6 +2931,12 @@ _:-o-prefocus, .selector {
 .filter-list li a:hover,.filter-list li a.active{color:#ff681a;}
 .filter-list li .fa{float:right; line-height:26px;}
 .sort-byDropdwon{width:130px; display:inline-block; vertical-align:middle;}
+.middle-content ul {display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;}
+.middle-content ul li {flex: 0 0 50%; max-width: 50%; position: relative; width: 100%; min-height: 1px; padding-right: 15px; padding-left: 15px;} 
+.middle-content ul li .image{border-radius: 10px; overflow: hidden;margin: -85px 0 20px;} 
+.middle-content ul li .image img{width:100%;} 
+.middle-content ul li .text .heading{font-family: 'brandon_grotesquemedium'; font-size: 20px; color: #212121; display: block; margin: 0 0 8px; white-space: nowrap; text-overflow: ellipsis;   width: 100%;   overflow: hidden;} 
+.middle-content ul li .text .heading a{color: #212121;} 
 .middle-content .list-textBoxes{margin-top:85px; overflow:visible;}
 .middle-content .list-imgBox{border-radius:10px; overflow:hidden; width:100%; margin:-85px 0 20px; background:#ccc; text-align:center;}
 .rating-star{width:75px; height:15px; display:inline-block; background:url(assets/img/star-gry.png)repeat-x; position:relative; margin-top:10px;}

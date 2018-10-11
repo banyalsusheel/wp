@@ -1,5 +1,5 @@
 <div class="filter-box">
-	<h3 class="sub-heading">Events Location</h3>
+	<h3 class="sub-heading">Place Filter</h3>
 	<ul class="filter-list">
 	<?php 
 	$taxonomy = 'place_categories';
