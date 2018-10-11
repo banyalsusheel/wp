@@ -110,7 +110,8 @@ function website_remove($fields) {
  */
 
 function get_location_of_event($event_id) {
-    global $wpdb;
+    return get_location_of_place($event_id);
+    /*global $wpdb;
     $location = get_post_meta($event_id, '_location_id', true);
     # code...
     $loc = array();
@@ -123,7 +124,7 @@ function get_location_of_event($event_id) {
         return $loc;
     } else {
         return false;
-    }
+    }*/
 }
 
 /*
@@ -486,12 +487,12 @@ function visitarian_metaboxes() {
     //create a custom meta box
     add_meta_box('place-featured-meta', 'Featured Selector', 'visitarian_metaboxes_featured_function', array('event', 'place'), 'normal', 'default');
     add_meta_box('place-organizer-meta', 'Organizer', 'visitarian_metaboxes_organizer_function', array('event'), 'normal', 'default');
-    add_meta_box('place-address-meta', 'Address for your place', 'visitarian_metaboxes_address_function', array('place'), 'normal', 'default');
+    add_meta_box('place-address-meta', 'Address', 'visitarian_metaboxes_address_function', array('place', 'event'), 'normal', 'default');
 }
 
 function visitarian_metaboxes_address_function($post) {
     $place_data = get_post_custom($post->ID);
-    echo 'Please enter address for your place.';
+    echo 'Please enter address.';
     ?>
    <p>
 	    <label>Address:</label>
@@ -552,6 +553,12 @@ function visitarian_metaboxes_save_function($post_ID) {
         if (isset($_POST)) {
             update_post_meta($post_ID, 'visitarian_featured', strip_tags($_POST['visitarian_featured']));
             update_post_meta($post_ID, 'event_organizer', strip_tags($_POST['event_organizer']));
+            update_post_meta($post->ID, "location_address", $_POST["location_address"]);
+            update_post_meta($post->ID, "location_town", $_POST["location_town"]);
+            update_post_meta($post->ID, "location_state", $_POST["location_state"]);
+            update_post_meta($post->ID, 'location_postcode', $_POST['location_postcode']);
+            update_post_meta($post->ID, 'location_region', $_POST['location_region']);
+            update_post_meta($post_ID, 'location_country', $_POST['location_country']);
         }
     }
 
@@ -706,13 +713,6 @@ function get_filters_for($hook = '') {
 		$i++;
 	}
 	wp_reset_query();
-
-
-
-
-
-
-
 
 	return $data;
  }
