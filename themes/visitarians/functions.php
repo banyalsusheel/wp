@@ -289,6 +289,39 @@ function post_custom_column_rating($column_name, $id) {
 add_filter('manage_posts_columns', 'post_average_rating_column');
 add_action('manage_posts_custom_column', 'post_custom_column_rating', 10, 2);
 
+
+
+/*
+ * FEATURED COLUMN FOR EVENT AND PLACES
+ */
+function get_post_featured($post_ID) {
+    $count_key = 'visitarian_featured';
+    $value = get_post_meta($post_ID, $count_key, true);
+    return $value;
+}
+
+function post_featured_column($newcolumn) {
+    global $post;
+    if ($post->post_type == "place" || $post->post_type == "event") {
+        $newcolumn['post_featured'] = __('Featured');
+    }
+    return $newcolumn;
+}
+
+function post_custom_column_featured($column_name, $id) {
+    global $post;
+    if ($post->post_type == "place" || $post->post_type == "event") {
+        if ($column_name === 'post_featured') {
+            echo get_post_featured(get_the_ID());
+        }
+    }
+}
+
+
+add_filter('manage_posts_columns', 'post_featured_column');
+add_action('manage_posts_custom_column', 'post_custom_column_featured', 10, 2);
+
+
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
@@ -497,6 +530,7 @@ function visitarian_metaboxes_organizer_function($post) {
    </p>
     <?php
 }
+
 function visitarian_metaboxes_featured_function($post) {
     $visitarian_featured = get_post_meta($post->ID, 'visitarian_featured', true);
     echo 'Select yes below to make this featured post';
@@ -567,7 +601,9 @@ function mycustomtheme_remove_myposttype_row_actions($action) {
 remove_filter('the_content', 'em_content');
 remove_filter('the_content', 'EM_Location_Post::the_content');
 remove_filter('the_content', 'EM_Event_Post::the_content');
-
+/**
+ * JUST A TEST FUNCTION
+ */
 function get_filters_for($hook = '') {
     global $wp_filter;
     if (empty($hook) || !isset($wp_filter[$hook])) {
@@ -576,4 +612,107 @@ function get_filters_for($hook = '') {
     return $wp_filter[$hook];
 }
 
+/**
+ * GET TOP FIVE EVENTS
+ */
 
+ function get_featured_events_places($count){
+	$current_time = current_time( 'timestamp' );
+	$current_date = date( 'Y-m-d H:i:s', $current_time );
+	$args = array(
+		'posts_per_page'=> $count,
+		'post_type'  => 'event',
+		'orderby' => 'ID',
+		'order'   => 'DESC',
+		'meta_query' => array(
+			'relation' => 'AND',
+			array(
+				'key' => 'visitarian_featured',
+				'value' => 'Yes',
+			),
+			array(
+				'key'        => '_event_end_local',
+				'compare'    => '>=',
+				'value'      => $current_date,
+			),
+		),
+	);
+	
+	$loop_event = new WP_Query( $args );
+	$total = $loop_event->post_count;
+	$data = array();
+
+	$i=0;
+	if($total == 0){
+		$i= 1;
+		$data[0]['image_thumb'] =  get_stylesheet_directory_uri()."/assets/img/slider2.jpg";
+		$data[0]['image_full'] = get_stylesheet_directory_uri()."/assets/img/default.jpg";
+		$data[0]['title'] = 'Visitarians';
+		$data[0]['link'] = '/';
+	}
+	
+	
+	while ( $loop_event->have_posts()) { 
+		$loop_event->the_post();
+		$data[$i] = array();
+		if ( has_post_thumbnail($post->ID) ) {
+			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' ); 
+			$imageThumb = esc_url( $thumbnail[0]);
+			$thumbnail_full = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full'  ); 
+			$imagefull = esc_url( $thumbnail_full[0]);	
+			$data[$i]['image_thumb'] = $imageThumb;		
+			$data[$i]['image_full'] = $imagefull;		
+		}	
+		$data[$i]['title'] = get_the_title();		
+		$data[$i]['link'] = get_the_permalink();
+		$data[$i]['class'] = 'visitarian-event-slider';				
+		$i++;
+	}
+	wp_reset_query();
+	/**
+	 * Featured Places
+	 */
+	$args = array(
+		'posts_per_page'=> $count,
+		'post_type'  => 'place',
+		'orderby' => 'ID',
+		'order'   => 'DESC',
+		'meta_query' => array(
+			'relation' => 'AND',
+			array(
+				'key' => 'visitarian_featured',
+				'value' => 'Yes',
+			)
+		),
+	);
+	
+	$places = new WP_Query( $args );
+	$total = $places->post_count;
+
+	while ( $places->have_posts()) { 
+		$places->the_post();
+		$data[$i] = array();
+		if ( has_post_thumbnail($post->ID) ) {
+			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' ); 
+			$imageThumb = esc_url( $thumbnail[0]);
+			$thumbnail_full = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full'  ); 
+			$imagefull = esc_url( $thumbnail_full[0]);	
+			$data[$i]['image_thumb'] = $imageThumb;		
+			$data[$i]['image_full'] = $imagefull;		
+		}	
+		$data[$i]['title'] = get_the_title();		
+		$data[$i]['link'] = get_the_permalink();		
+		$data[$i]['class'] = 'visitarian-place-slider';		
+		$i++;
+	}
+	wp_reset_query();
+
+
+
+
+
+
+
+
+	return $data;
+ }

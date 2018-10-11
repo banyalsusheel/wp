@@ -41,7 +41,6 @@ get_header(); ?>
 				<h2 class="main-heading"><?php the_title(); ?> <span>Events List</span></h2>
 				<ul>
 				<?php 
-				
 					$location_id = get_post_meta(get_the_ID(), '_location_id', true);
 					$current_time = current_time( 'timestamp' );
 					$current_date = date( 'Y-m-d H:i:s', $current_time );
@@ -84,7 +83,7 @@ get_header(); ?>
 						$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">';
 						if ( has_post_thumbnail($post->ID) ) {
 							$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x117' ); 
-							$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[1].'" alt="Visitarians">';
+							$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';
 						}
 						
 						$rating = average_rating(get_the_ID());?>
