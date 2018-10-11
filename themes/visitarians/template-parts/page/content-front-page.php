@@ -8,20 +8,8 @@
  * @version 1.0
  */
 ?>
-
-	<aside class="left-side">
-		<h2 class="main-heading">Popular <span>Events</span></h2>
-		<?php get_sidebar('popular-events');?>
-		<?php dynamic_sidebar( 'sidebar-left-banners' ); ?>
-		
-	</aside>
-	<aside class="left-side right-side">
-		<h2 class="main-heading">Popular <span>Places</span></h2>
-		<?php get_sidebar('popular-places');?>
-		<?php dynamic_sidebar( 'sidebar-right-banners' ); ?>
-	</aside>
-
-
+	<?php get_sidebar('left');?>
+	<?php get_sidebar('right');?>
 
 	<!-- Start Middle content Area -->
 	<div class="middle-content">	
@@ -35,7 +23,6 @@
 			'orderby' => 'ID',
 			'order'   => 'DESC',
 			'meta_query' => array(
-				// 'relation' => 'OR',
 				array(
 	                'key'        => '_event_end_local',
 	                'compare'    => '>=',
