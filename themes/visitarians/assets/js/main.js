@@ -7,6 +7,9 @@ $(window).load(function () {
   $('#event_slider').flexslider({
     animation: "slide",
     controlNav: false,
+    mousewheel: false,
+    touch: true,
+    randomize: false, 
     start: function (slider) {
       $('body').removeClass('loading');
     }
@@ -14,12 +17,15 @@ $(window).load(function () {
   $('#event_slider_thumbnail').flexslider({
     animation: "slide",
     animationLoop: true,
-    itemWidth: 210,
+    itemWidth: 150,
     itemMargin: 5,
     pausePlay: true,
     mousewheel: false,
     touch: true,
+    randomize: false, 
+    controlNav: false,
     asNavFor: '.flexslider'
+    
   });
 });
 

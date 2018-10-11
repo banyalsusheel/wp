@@ -119,8 +119,7 @@ endif;
 					<div class="flexslider" id="event_slider">
 						<ul class="slides">
 							<?php foreach ($slider_images as $value) {?>
-								<li >
-								
+								<li>
 									<h1 class="text-uppercase text-white"><?php echo $value['title'] ?></h1>
 									<img src="<?php echo $value['image_full'] ?>" />
 									<a href="<?php echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a>
