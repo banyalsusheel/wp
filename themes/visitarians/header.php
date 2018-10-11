@@ -95,9 +95,9 @@ endif;
 							  	<?php if (has_nav_menu('top')): ?>
 							  		<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 										<?php
-$defaults = array('container' => '', 'menu_class' => 'navbar-nav', 'menu_id' => 'top-menu', 'theme_location' => 'top');
-wp_nav_menu($defaults);
-?>
+										$defaults = array('container' => '', 'menu_class' => 'navbar-nav', 'menu_id' => 'top-menu', 'theme_location' => 'top');
+										wp_nav_menu($defaults);
+										?>
 									</div>
 							  	<?php endif;?>
 
@@ -116,29 +116,21 @@ wp_nav_menu($defaults);
 
 				<?php $slider_images = get_featured_events_places(5);?>
 				<!-- Place somewhere in the <body> of your page -->
-					<div class="flexslider" id="event_slider" style="direction:rtl">
+					<div class="flexslider" id="event_slider">
 						<ul class="slides">
 							<?php foreach ($slider_images as $value) {?>
-								<li>
-
-									<!-- <div class="container">
-										<div class="row fullscreen justify-content-center align-items-center">
-											<div class="col-md-10 col-12">
-												<div class="banner-content text-center"> -->
-													<h1 class="text-uppercase text-white"><?php echo $value['title'] ?></h1>
-													<img src="<?php echo $value['image_full'] ?>" />
-													<a href="<?php echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a>
-												<!-- </div>
-											</div>
-										</div>
-									</div> -->
-
+								<li >
+								
+									<h1 class="text-uppercase text-white"><?php echo $value['title'] ?></h1>
+									<img src="<?php echo $value['image_full'] ?>" />
+									<a href="<?php echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a>
+				
 								</li>
 							<?php }?>
 						</ul>
 						</div>
 
-						<div class="flexslider carousel" id="event_slider_thumbnail" style="direction:rtl">
+						<div class="flexslider carousel" id="event_slider_thumbnail" >
 							<ul class="slides">
 							<?php foreach ($slider_images as $value) {?>
 								<li class="<?php echo $value['class'] ?>" >
@@ -147,65 +139,21 @@ wp_nav_menu($defaults);
 							<?php }?>
 							</ul>
 						</div>
-					<?php /* ?>
-<div class="item-slider relative" style="background: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slider1.jpg);background-size: cover;">
-<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-<div class="container">
-<div class="row fullscreen justify-content-center align-items-center">
-<div class="col-md-10 col-12">
-<div class="banner-content text-center">
-<h1 class="text-uppercase text-white">New Adventure</h1>
-<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-<a href="#" class="text-uppercase header-btn">Discover Now</a>
-</div>
-</div>
 
-</div>
-</div>
-</div>
-<div class="item-slider relative" style="background: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slider2.jpg);background-size: cover;">
-<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-<div class="container">
-<div class="row fullscreen justify-content-center align-items-center">
-<div class="col-md-10 col-12">
-<div class="banner-content text-center">
-<h1 class="text-uppercase text-white">New Trip</h1>
-<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-<a href="#" class="text-uppercase header-btn">Discover Now</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item-slider relative" style="background: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slider3.jpg);background-size: cover;">
-<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-<div class="container">
-<div class="row fullscreen justify-content-center align-items-center">
-<div class="col-md-10 col-12">
-<div class="banner-content text-center">
-<h1 class="text-uppercase text-white">New Experience</h1>
-<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-<a href="#" class="text-uppercase header-btn">Discover Now</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<?php */?>
 				</section>
 
 			<?php } else if (is_tax()) {
-    $cat_id = get_queried_object_id();
-    $cat_image = z_taxonomy_image_url($cat_id);
-    $cat_obj = get_term($cat_id);
-    $style = "style='background:#fdb101'";
-    if (!empty($cat_image)):
-        $style = "style='background:url(" . esc_url($cat_image) . ");background-size: cover;'";
-        ?>
-											<?php endif;?>
+				$cat_id = get_queried_object_id();
+				$cat_image = z_taxonomy_image_url($cat_id);
+				$cat_obj = get_term($cat_id);
+				$style = "style='background:#fdb101'";
+				if (!empty($cat_image)) {
+					$style = "style='background:url(" . esc_url($cat_image) . ");background-size: cover;'";
+					?>
+				<?php }?>
 
 				<section class="default-banner">
-					<div class="relative" <?php echo $style; ?>">
+					<div class="relative" <?php echo $style; ?>>
 						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 						<div class="container">
 							<div class="row fullscreen justify-content-center inner-banner align-items-center">
@@ -223,14 +171,13 @@ wp_nav_menu($defaults);
 
 			<?php } else {?>
 				<section class="default-banner">
-					<?php
-$style = "style='background:#fdb101'";
-    if (has_post_thumbnail($post->ID)) {
-        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'twentyseventeen-featured-image');
-        $style = 'style="background: url( ' . esc_url($thumbnail[0]) . ' );background-size: cover;"';
-    }
-    ?>
-					<div class="relative" <?php echo $style; ?>">
+					<?php $style = "style='background:#fdb101'";
+					if (has_post_thumbnail($post->ID)) {
+						$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'twentyseventeen-featured-image');
+						$style = 'style="background: url( ' . esc_url($thumbnail[0]) . ' );background-size: cover;"';
+					}
+					?>
+					<div class="relative" <?php echo $style; ?>>
 						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 						<div class="container">
 							<div class="row fullscreen justify-content-center inner-banner align-items-center">
@@ -238,12 +185,11 @@ $style = "style='background:#fdb101'";
 									<div class="banner-content text-center">
 										<h1 class="text-uppercase text-white"><?php the_title()?></h1>
 										<h4 class="text-white text-uppercase">
-											<?php
-$tag_line = get_post_meta(get_the_ID(), 'tag_line', true);
-    if (!empty($tag_line)) {
-        echo $tag_line;
-    }
-    ?>
+											<?php $tag_line = get_post_meta(get_the_ID(), 'tag_line', true);
+											if (!empty($tag_line)) {
+												echo $tag_line;
+											}
+											?>
 										</h4>
 									</div>
 								</div>

@@ -203,7 +203,10 @@
 <script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/jquery.counterup.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/waypoints.min.js"></script>		
 <script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/jquery.flexslider.js"></script>	
-<script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/main.js"></script>	
+<script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/main.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/jquery.easing.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri();?>/assets/js/jquery.mousewheel.js"></script>
+
 
 </body>
 </html>
