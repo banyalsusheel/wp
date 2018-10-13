@@ -56,9 +56,9 @@
 					<div class="text">
 						<h1 class="heading"><a href="<?php echo esc_url( get_permalink() )?>"><?php the_title();?></a></h1>
 						<span class="event-type"><?php echo $categories['categories_link']; ?></span>
-						<p><?php echo $dates;?></p>
+						<span class="event-date"><?php echo $dates;?></span>
 				       	<?php if(!empty($location_data)){?>
-				       		<p><?php echo $location_data['location'];?></p>
+				       		<span class="event-type"><?php echo $location_data['location'];?></span>
 				       	<?php } ?>
 					    <p><?php echo $content; ?></p>
 						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more">Continue Reading</a></div>
@@ -133,9 +133,8 @@
 					<div class="text">
 						<h1 class="heading"><a href="<?php echo esc_url( get_permalink() )?>" ><?php the_title();?></a></h1>
 						<span class="event-type"><?php echo $categories['categories_link']; ?></span>
-						<p><?php echo $dates;?></p>
-				       	<?php if(!empty($location_data)){?>
-				       		<p><?php echo $location_data['location'];?></p>
+						<?php if(!empty($location_data)){?>
+				       		<span class="event-type"><?php echo $location_data['location'];?></span>
 				       	<?php } ?>
 					    <p><?php echo $content; ?></p>
 						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more">Continue Reading</a></div>

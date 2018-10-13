@@ -29,7 +29,7 @@ $cat_image = z_taxonomy_image_url($cat_id);
 			$paged= (get_query_var('page' )) ? get_query_var('page'):1;
 			$args = array(
 				'paged' => $paged,
-				'posts_per_page'=> 2,
+				'posts_per_page'=> 4,
 				'post_type'  => 'place',
 				'orderby' => 'ID',
 				'order'   => 'DESC',
@@ -57,15 +57,23 @@ $cat_image = z_taxonomy_image_url($cat_id);
 				}
 				$rating = average_rating(get_the_ID());?>
 				<li>
-					<div class="image"><?php echo $image;?></div>
-					<div class="text">
-						<h2 class="heading"><a href="<?php echo esc_url( get_permalink() )?>"><?php the_title();?></a></h2>
-						<p><?php echo $rating;?></p>
-				       	<?php if(!empty($location_data)){?>
-				       		<p><?php echo $location_data['location'];?></p>
-				       	<?php } ?>
-				       	<span class="event-type"><?php echo $categories['categories']; ?></span>
-						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more"></a></div>
+					<div class="sub-boxes list-textBoxes">
+						<div class="image"><?php echo $image;?></div>
+						<div class="text">
+							<h2 class="heading"><a href="<?php echo esc_url( get_permalink() )?>"><?php the_title();?></a></h2>
+							<span class="pull-right"><?php echo $rating;?></span>
+							<div class="event-DateLocation">
+								<div class="DateLocation-inner">
+								<?php if(!empty($location_data)){?>
+									<div class="date-location">
+									<i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $location_data['location'];?>
+									</div>
+								<?php } ?>
+								<span class="event-type"><?php echo $categories['categories']; ?></span>
+							</div>
+							<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more DateLocation-iconLink"></a></div>
+						</div>
+						</div>
 					</div>
 				</li>
 			<?php }?>

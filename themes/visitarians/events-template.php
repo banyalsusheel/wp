@@ -16,7 +16,7 @@ get_header(); ?>
 		    $paged= (get_query_var('paged' )) ? get_query_var('paged'):1;
 			$args = array(
 				'paged' => $paged,
-				'posts_per_page'=> 2,
+				'posts_per_page'=> 4,
 				'post_type'  => 'event',
 				'orderby' => 'ID',
 				'order'   => 'DESC',
@@ -59,16 +59,16 @@ get_header(); ?>
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 										<?php echo $dates;?>
 									</div>
-									<?php if(!empty($location_data)){?>
-									<div class="date-location">
-									<i class="fa fa-map-marker" aria-hidden="true"></i>
-									<?php echo $location_data['location'];?>
-									</div>								
-									<?php } ?>
-									<span class="event-type"><?php echo $categories['categories_link']; ?></span>
-							   </div>
-							<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more DateLocation-iconLink"></a></div>
-						</div>
+										<?php if(!empty($location_data)){?>
+										<div class="date-location">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										<?php echo $location_data['location'];?>
+										</div>								
+										<?php } ?>
+										<span class="event-type"><?php echo $categories['categories_link']; ?></span>
+								   </div>
+								<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more DateLocation-iconLink"></a></div>
+							</div>
 						</div>
 					</div>
 				</li>
