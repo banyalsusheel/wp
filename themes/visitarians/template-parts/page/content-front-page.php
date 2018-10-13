@@ -8,21 +8,9 @@
  * @version 1.0
  */
 ?>
-
-	<aside class="left-side">
-		<h2 class="main-heading">Popular <span>Events</span></h2>
-		<?php get_sidebar('popular-events');?>
-		<?php dynamic_sidebar( 'sidebar-left-banners' ); ?>
-		
-	</aside>
-	<aside class="left-side right-side">
-		<h2 class="main-heading">Popular <span>Places</span></h2>
-		<?php get_sidebar('popular-places');?>
-		<?php dynamic_sidebar( 'sidebar-right-banners' ); ?>
-	</aside>
-
-
-
+	<?php get_sidebar('left');?>
+	<?php get_sidebar('right');?>
+	
 	<!-- Start Middle content Area -->
 	<div class="middle-content">	
 		<h2 class="main-heading">Upcoming <span>Events</span></h2>
@@ -35,7 +23,6 @@
 			'orderby' => 'ID',
 			'order'   => 'DESC',
 			'meta_query' => array(
-				// 'relation' => 'OR',
 				array(
 	                'key'        => '_event_end_local',
 	                'compare'    => '>=',
@@ -58,7 +45,7 @@
 			$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="227" alt="Visitarians">';
 			if ( has_post_thumbnail($post->ID) ) {
 				$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' ); 
-				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[1].'" alt="Visitarians">';
+				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';
 				
 			}
 			$total = $loop_event->post_count;
@@ -135,7 +122,7 @@
 			$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="227" alt="Visitarians">';
 			if ( has_post_thumbnail($post->ID) ) {
 				$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' ); 
-				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[1].'" alt="Visitarians">';
+				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';
 				
 			}
 			$total = $loop_event->post_count;

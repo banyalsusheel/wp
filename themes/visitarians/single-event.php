@@ -16,7 +16,7 @@ get_header(); ?>
 	<aside class="left-side">
 		<h2 class="main-heading">Filter<span></span></h2>
 		<?php get_sidebar('left-event-filters');?>		
-		<?php get_sidebar('left-place-filters');?>
+		<?php get_sidebar('left-location-filters');?>
 		<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 	</aside>
 	

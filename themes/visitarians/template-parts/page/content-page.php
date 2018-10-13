@@ -11,9 +11,9 @@
  */
 
 ?>
-
-<?php
-	the_content();
-?>
+<div class="middle-content">
+	<h2 class="main-heading"><?php the_title()?> </h2>
+	<?php the_content();?>
+</div>
 
 
