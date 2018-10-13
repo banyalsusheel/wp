@@ -14,7 +14,7 @@ get_header(); ?>
 <?php if(function_exists('bac_PostViews')) { bac_PostViews(get_the_ID()); }?>
 <aside class="left-side">
 	<h2 class="main-heading">Filter<span></span></h2>
-	<?php //get_sidebar('left-event-filters');?>		
+	<?php get_sidebar('left-event-filters');?>		
 	<?php get_sidebar('left-location-filters');?>
 	<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 </aside>
@@ -29,7 +29,7 @@ get_header(); ?>
 		       	// LOCATION
 		       	$location_data = get_location_of_event(get_the_ID());
 		       	if(!empty($location_data['location'])){?>
-		       		<div class="event-location"><?php echo $location_data['location'];?></div>  
+		       		<!-- <div class="event-location"><?php echo $location_data['location'];?></div>   -->
 		       	<?php } ?>
 		        <!-- CONTENT -->
 		        <div class="location-content">
