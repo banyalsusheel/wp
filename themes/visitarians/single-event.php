@@ -25,43 +25,58 @@ get_header(); ?>
 		<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();?>
-				
-				<div class="event-title"><?php the_title(); ?></div>
+				<div class="detail-pageTop">
+					<div class="event-title"><?php the_title(); ?></div>
 
-				<?php
-				// CATEGORIES
-				$categories = get_categories_of_posttype($post->ID, 'event-categories');
-				?>
+					<?php
+					// Featured image 2
+					$featured_image = kdmfi_get_featured_image_src( 'featured-image-2', 'thumbnail-size-769x433' );
+					$event_organizer = get_post_meta(get_the_ID(), 'event_organizer', true);
+					?>
+					<div class="featured-image-2"><img src="<?php echo $featured_image ?>"></div>
+					<div> Organizer : <?php echo $event_organizer;?></div>
+					<?php
+					// CATEGORIES
+					$categories = get_categories_of_posttype($post->ID, 'event-categories');
+					?>
 
-		        <?php 
-		        //DATES
-		       	$_event_start_local = get_post_meta(get_the_ID(), '_event_start_local', true);
-		       	$_event_end_local = get_post_meta(get_the_ID(), '_event_end_local', true);
-		       	$event_organizer = get_post_meta(get_the_ID(), 'event_organizer', true);
-		       	?>
+					<?php 
+					//DATES
+					$_event_start_local = get_post_meta(get_the_ID(), '_event_start_local', true);
+					$_event_end_local = get_post_meta(get_the_ID(), '_event_end_local', true);
+					
+					?>
 
-		       	
+					
 
-		       	<?php 
-		       	// LOCATION
-		       	$location_data = get_location_of_event(get_the_ID());
-		       	if(!empty($location_data)){?>
-		       		<div class="event-location"><?php echo $location_data['location'];?></div> | 
-		       	<?php } ?>
-		        <div class="event-dates">
-		        	<?php echo date('d M Y', strtotime($_event_start_local))?> - <?php echo date('d M Y', strtotime($_event_end_local))?> <?php echo date('H:i A', strtotime($_event_start_local))?> |
-		        </div>
-		        <div class="event-rating"> <?php echo average_rating(get_the_ID());?></div>
-		    
+					<?php 
+					// LOCATION
+					$location_data = get_location_of_event(get_the_ID());
+					if(!empty($location_data)){?>
+						<div class="event-location"><i class="fa fa-map-marker fa-icon" aria-hidden="true"></i> <?php echo $location_data['location'];?></div> <span class="separater">|</span> 
+					<?php } ?>
+					<div class="event-dates">
+						<i class="fa fa-calendar-check-o fa-icon" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($_event_start_local))?> - <?php echo date('d M Y', strtotime($_event_end_local))?> <?php echo date('H:i A', strtotime($_event_start_local))?> &nbsp; | &nbsp; 
+					</div>
+					<div class="event-rating"> <?php echo average_rating(get_the_ID());?></div>
+				</div>
 		        <div class="event-category"><?php echo $categories['categories_link']; ?></div>
 
 		        <!-- CONTENT -->
 		        <div class="event-content">
 					<?php the_content();?>
 		        </div>
-		        <div> Event organizer : <?php echo $event_organizer;?></div>
+				<div class="social-share-btns">Share this <?php echo sharethis_inline_buttons(); ?></div>
 				
-		        <!-- RECOMMENDED EVENT SECTION -->
+				
+		        
+				<?php
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;?>
+
+				<!-- RECOMMENDED EVENT SECTION -->
 				<div class="event-recommended">
 					
 					
@@ -151,14 +166,8 @@ get_header(); ?>
 					</ul>
 
 		        </div>
-				<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
 				
-			endwhile; // End of the loop.
+			<?php  endwhile; // End of the loop.
 			?>
 	</div>
 <?php get_footer();

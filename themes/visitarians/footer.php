@@ -58,25 +58,17 @@
 <?php if ( !( twentyseventeen_is_frontpage() || ( is_home() && is_front_page() ) ) ) { ?>
 	<div class="mt-150"></div>
 <?php } ?>
-
-<section class="subscribe-newsletter">
+<?php if ( !( is_page('contact-us'))) { ?>
+	<section class="subscribe-newsletter">
 	<div class="single-footer-widget">
 		<h6>SUBSCRIBE TO OUR NEWSLETTER</h6>
 		<p>And be up to date</p>
 		<div class="newsletter-form" id="mc_embed_signup">
 			<?php es_subbox( $namefield =  "", $desc = "", $group = "" ); ?>
-			<!-- <form novalidate="true" action="#" method="get" class="form-block">
-				<div class="d-flex flex-row">
-					<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
-					<button class="click-btn btn btn-default">Subscribe</button>
-				</div>		
-			</form> -->
-
 		</div>
-	</div>
-	
+	</div>	
 </section>
-
+<?php } ?>
 <footer class="footer-area section-gap">
 	<div class="container">
 		<div class="footer-whiteBg">
@@ -135,36 +127,7 @@
 									<h6>Twitter Feed</h6>
 									<?php echo do_shortcode('[custom-twitter-feeds exclude="retweeter,actions,linkbox,twitterlink" include="author,date,text,avatar"]')?>
 									<?php //dynamic_sidebar( 'twitter-feed-item' ); ?>
-									<!-- <ul class="twitter-feeds">
-									<li>
-										<div class="img">
-											<i class="fa fa-twitter"></i>
-										</div>
-										<div class="text">
-											<p><a href="#" title="Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS">Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS</a></p>
-											<span class="date">2 months ago</span>
-										</div>
-									</li>
-									<li>
-										<div class="img">
-											<i class="fa fa-twitter"></i>
-										</div>
-										<div class="text">
-											<p><a href="#" title="Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS">Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS</a></p>
-											<span class="date">2 months ago</span>
-										</div>
-									</li>
-									<li>
-										<div class="img">
-											<i class="fa fa-twitter"></i>
-										</div>
-										<div class="text">
-											<p><a href="#" title="Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS">Discover a #WordPress theme oasis; all you can imagine & more, just make your pick! Come on down to https://t.co/J4OoD1BHeS</a></p>
-											<span class="date">2 months ago</span>
-										</div>
-									</li>
-									
-								</ul> -->
+								
 								</div>
 							</div>
 									

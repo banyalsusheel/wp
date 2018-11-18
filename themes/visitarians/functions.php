@@ -9,6 +9,7 @@ function pr($arr){
 add_image_size('thumbnail-size-250x117', 250, 117, true);
 add_image_size('thumbnail-size-250x227', 250, 227, true);
 add_image_size('thumbnail-size-100x64', 100, 64, true);
+add_image_size('thumbnail-size-769x433', 769, 433, true);
 
 add_filter('nav_menu_link_attributes', 'wpse156165_menu_add_class', 10, 3);
 
@@ -716,3 +717,36 @@ function get_filters_for($hook = '') {
 
 	return $data;
  }
+
+
+
+ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+    // Add featured-image-2 to pages and posts
+    $args_1 = array(
+      'id' => 'featured-image-2',
+      'desc' => 'Your description here.',
+      'label_name' => 'Featured Image 2',
+      'label_set' => 'Set featured image 2',
+      'label_remove' => 'Remove featured image 2',
+      'label_use' => 'Set featured image 2',
+      'post_type' => array( 'place', 'event',  ),
+    );
+  
+    // Add featured-image-2 to pages only
+    // $args_2 = array(
+    //   'id' => 'featured-image-3',
+    //   'desc' => 'Your description here.',
+    //   'label_name' => 'Featured Image 3',
+    //   'label_set' => 'Set featured image 3',
+    //   'label_remove' => 'Remove featured image 3',
+    //   'label_use' => 'Set featured image 3',
+    //   'post_type' => array( 'page' ),
+    // );
+  
+    // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+    $featured_images[] = $args_1;
+    // $featured_images[] = $args_2;
+  
+    // Important! Return all featured images
+    return $featured_images;
+  });

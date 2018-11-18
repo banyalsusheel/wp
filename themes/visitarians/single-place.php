@@ -23,24 +23,28 @@ get_header(); ?>
 		<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();?>
-				
-				<div class="place-title"><?php the_title(); ?></div>
+				<div class="detail-pageTop">
+					<div class="place-title"><?php the_title(); ?></div>
+					<?php
+					// Featured image 2
+					$featured_image = kdmfi_get_featured_image_src( 'featured-image-2', 'thumbnail-size-769x433' );
+					?>
+					<div class="featured-image-2"><img src="<?php echo $featured_image ?>"></div>
+					<?php
+					// CATEGORIES
+					$categories = get_categories_of_posttype($post->ID, 'place_categories');
+					?>
 
-				<?php
-				// CATEGORIES
-				$categories = get_categories_of_posttype($post->ID, 'place_categories');
-				?>
-
-		       	<?php 
-		       	// LOCATION
-		       	$location_data = get_location_of_place(get_the_ID());
-		       	// print_r($location_data);
-		       	if(!empty($location_data['location'])){?>
-		       		<div class="event-location"><?php echo $location_data['location'];?></div> | 
-		       	<?php } ?>
-		       
-		        <div class="place-rating"> <?php echo average_rating(get_the_ID());?></div>
-		    
+					<?php 
+					// LOCATION
+					$location_data = get_location_of_place(get_the_ID());
+					// print_r($location_data);
+					if(!empty($location_data['location'])){?>
+						<div class="event-location"><i class="fa fa-map-marker location-icon" aria-hidden="true"></i> <?php echo $location_data['location'];?></div> <span class="separater">|</span> 
+					<?php } ?>
+				   
+					<div class="place-rating"> <?php echo average_rating(get_the_ID());?></div>
+				</div>
 		        <div class="place-category"><?php echo $categories['categories']; ?></div>
 
 		        <!-- CONTENT -->
@@ -48,18 +52,27 @@ get_header(); ?>
 					<?php the_content();?>
 		        </div>
 				
-		        <!-- RECOMMENDED EVENT SECTION -->
+				<div class="social-share-btns">Share this <?php echo sharethis_inline_buttons(); ?></div>
+				
+		        
+				<?php
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;?>
+
+				<!-- RECOMMENDED EVENT SECTION -->
 				<div class="place-recommended">
 					
 					
 					<?php 
 			        	$args = [
-						    'post_type' => 'location',
+						    'post_type' => 'place',
 						    'exclude'   => array(get_the_id()),
 						    'post__not_in'   => array(get_the_id()),
 						    'tax_query' => [
 						        [
-						            'taxonomy' => 'place-categories',
+						            'taxonomy' => 'place_categories',
 						            'terms' => $categories['category_ids'],
 						            'include_children' => false // Remove if you need posts from term 7 child terms
 						        ],
@@ -109,14 +122,7 @@ get_header(); ?>
 					</ul>
 
 		        </div>
-				<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-				
-			endwhile; // End of the loop.
+			<?php endwhile; // End of the loop.
 			?>
 	</div>
 <?php get_footer();
