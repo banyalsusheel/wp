@@ -33,7 +33,7 @@ get_header(); ?>
 		       	<?php } ?>
 		        <!-- CONTENT -->
 		        <div class="location-content">
-					<?php changeActions(); the_content();?>
+					<?php remove_filter_the_content(); the_content();?>
 		        </div>
 				
 		        <!-- LOCATION EVENTS -->

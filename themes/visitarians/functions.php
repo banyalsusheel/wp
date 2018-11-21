@@ -606,8 +606,8 @@ function mycustomtheme_remove_myposttype_row_actions($action) {
     return $action;
 }
 
-add_action( 'init', 'changeActions' );
-function changeActions(){    
+add_action( 'init', 'remove_filter_the_content' );
+function remove_filter_the_content(){    
     foreach ( array( 'the_content', 'the_title' ) as $hook ){
         remove_filter($hook, 'em_content');
         remove_filter($hook, 'EM_Location_Post::the_content');

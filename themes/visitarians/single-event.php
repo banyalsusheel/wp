@@ -64,7 +64,7 @@ get_header(); ?>
 
 		        <!-- CONTENT -->
 		        <div class="event-content">
-					<?php changeActions();
+					<?php remove_filter_the_content();
 					the_content();?>
 		        </div>
 				<div class="social-share-btns">Share this <?php echo sharethis_inline_buttons(); ?></div>
