@@ -74,9 +74,9 @@ body {
   font-family: 'brandon_grotesque_regularRg';
   font-size: 14px;
   font-weight: 300;
-  line-height: 1;
+  line-height: 1.625em;
   position: relative;
-  background:#fff;
+  background:#f9f9f9;
   font-weight:normal;
 }
 
@@ -2988,12 +2988,12 @@ _:-o-prefocus, .selector {
 .detail-pageTop .fa-icon{color: #ff6c1e; font-size: 20px;}
 .separater{margin:0 10px;}
 .comments-area{ overflow:hidden;}
-.comments-area .comment-body {background: #f8faf9; padding: 15px; border-radius: 5px; position: relative; margin: 60px 0 120px;}
+.comments-area .comment-body {background: #fff; padding: 15px; border-radius: 5px; position: relative; margin: 60px 0 120px;}
 .comment-body .avatar.avatar-100.photo {border-radius: 50%; margin: -38px 0 0; width: 70px; height: 70px; position: absolute; top: 0;}
 .comment-body .comment-author.vcard,.comment-metadata {margin: 0px 0 20px; padding: 20px 0 0px; display: inline-block;}
 .comment-body .reply {position: absolute; right: 10px; top: 0;}
 .comments-area .wpcr_author_stars {position: absolute; bottom: -60px; left: 50%; margin: 0 0 0 -40px;}
-.comments-area .wpcr_author_stars::before {position: absolute; left: -9999px; content: ''; height: 40px; margin:-10px 0 0; background: #f8faf9; z-index: -1; right: -9999px; border:1px solid #f0f0f0;}
+.comments-area .wpcr_author_stars::before {position: absolute; left: -9999px; content: ''; height: 40px; margin:-10px 0 0; background: #fff; z-index: -1; right: -9999px; border:1px solid #f0f0f0;}
 .comment-respond .comment-form-author {width: 50%;  display: inline-block; float: left; padding-right:10px;}
 .comment-respond .comment-form-email {width: 50%; display: inline-block;  padding-left:10px}
 .comment-respond .comment-form-author input,.comment-respond .comment-form-email input {width:100%;}
@@ -3001,19 +3001,32 @@ _:-o-prefocus, .selector {
 .form-submit{text-align:right;}
 .comment-respond input, .comment-respond textarea{border:1px solid #e0e0e0;border-radius: 5px; padding: 8px}
 .form-submit .submit{background:#ff671b; color:#fff; border-color: transparent; border-radius: 5px; padding: 8px 15px; cursor:pointer;}
+.social-share-btns{border-top:1px solid #d1cfcf; border-bottom:1px solid #d1cfcf; display:inline-block; width:100%; padding:15px 0; margin:30px 0; line-height:32px;}
+.social-share-btns #st-1{float:right;}
+.st-btn {margin: 0 5px;}
+.orgnizer-div {margin: 0 0 20px;}
+
 
 /* Contact us form css */
 .no-margin {margin: 0px;}
 .contactUs-form{margin:30px 0 0; line-height:normal;}
 .contactUs-form .heading{color:#ff6816; font-size:20px; text-transform:uppercase; letter-spacing:3px;}
 .contactUs-form .follows-links a{width:30px; height:30px; display:inline-block; background:#e8e8e8; border-radius:50%; text-align:center; line-height:30px; margin:5px;}
-.contactUs-form .form-section{background:#ffb901; color:#fff; padding:20px 20px 0; border-radius:15px;}
+.contactUs-form .form-section{background:#ffb901; color:#fff; padding:20px 30px; border-radius:15px;}
+.contactUs-form .form-section .heading-lrg{font-size: 82px; font-family: 'brandon_grotesquelight'; font-weight: 200; color: #fff; line-height: 82px !important; margin: 0 0 20px;}
+.contactUs-form .form-section p.question{font-size: 20px; color: #4a4a4a;}
 .contactUs-form .form-section input, .contactUs-form .form-section textarea{background:none; color:#fff; width:100%; padding:6px 12px; border-radius:5px; border:1px solid #fff;}
 .contactUs-form .form-section textarea{height:150px;}
+.contactUs-form .form-section label{display:block;}
 .contactUs-form .form-section input[type="submit"]{background:#fff; color:#22a7d0; cursor:pointer;}
 .contactUs-form .form-section form p:last-child{margin:0px;}
+.google-recaptcha-container{float:left;}
 div.wpcf7-response-output {margin: 0em 0.5em 1em;}
 
+/* recommended css */
+.place-recommended, .event-recommended {margin: 0 -275px; clear: both;}
+.place-recommended .place-rating,.place-recommended .place-category {display: inline-block; margin:0 0 10px; vertical-align:middle;}
+.middle-content .place-recommended ul li,.middle-content .event-recommended ul li {flex: 0 0 25%; max-width: 25%;}
 
 
 /* responsive css */

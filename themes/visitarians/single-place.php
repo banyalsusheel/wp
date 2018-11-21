@@ -92,30 +92,36 @@ get_header(); ?>
 							$categories = get_categories_of_posttype($post->ID, 'place_categories');
 							?>	
 						  	<li>
-						  		<?php if ( has_post_thumbnail($post->ID) ) {
-									$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'twentyseventeen-featured-image' );
-									?>
-									<div class="place-img">
-										<img src="<?php echo esc_url( $thumbnail[0] );?>" class="img-fluid" alt="" width="200" height="200">
+								<div class="sub-boxes">
+									<div class="image-content">
+										<div class="img">
+										<?php if ( has_post_thumbnail($post->ID) ) {
+											$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'twentyseventeen-featured-image' );
+											?>
+											<div class="image-box place-img">
+												<img src="<?php echo esc_url( $thumbnail[0] );?>" class="img-fluid" alt="" width="200" height="200">
+											</div>
+										<?php } else{ ?>
+											<div class="image-box">
+												<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">
+											</div>
+										<?php } ?>	
+										</div>
+										<div class="txt">
+										<a href="<?php echo esc_url( get_permalink() )?>" title="<?php the_title();?>"><?php the_title();?></a>
+											<?php 
+											$location_data = get_location_of_place(get_the_ID());
+											if(!empty($location_data['location'])){?>
+												<div class="place-location"><?php echo $location_data['location'];?></div>
+											<?php } ?>
+										</div>
 									</div>
-								<?php } else{ ?>
-									<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">
-								<?php } ?>	
-
-								<div class="place-content">									
-									<a href="<?php echo esc_url( get_permalink() )?>" title="<?php the_title();?>"><?php the_title();?></a>
-
-									<?php 
-									$location_data = get_location_of_place(get_the_ID());
-							       	if(!empty($location_data['location'])){?>
-							       		<div class="place-location"><?php echo $location_data['location'];?></div> | 
-							       	<?php } ?>
-									
-								    <div class="place-rating"> <?php echo average_rating(get_the_ID());?></div>
-								    <div class="place-category"><?php echo $categories['categories_link']; ?></div>
-									<div class="place-content"><?php echo substr(strip_tags($post->post_content), 0, 100); ?>
+									<div class="place-content">										
+										
+										<div class="place-category"><?php echo $categories['categories_link']; ?></div> 
+										<div class="place-rating"> <?php echo average_rating(get_the_ID());?></div>
+										<div class="place-content"><?php echo substr(strip_tags($post->post_content), 0, 100); ?></div>									
 									</div>
-									
 								</div>
 							</li>
 						<?php endwhile; wp_reset_query(); ?>

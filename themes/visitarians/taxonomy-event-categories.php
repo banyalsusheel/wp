@@ -64,12 +64,18 @@ $cat_image = z_taxonomy_image_url($cat_id);
 				$dates =  date('d M H:i a', strtotime($_event_start_local)).' - '. date('d M H:i a', strtotime($_event_end_local));
 				$location_data = get_location_of_event(get_the_ID());
 				$content = substr(strip_tags($post->post_content), 0, 60);
+
+
+				
 				$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">';
-				if ( has_post_thumbnail($post->ID) ) {
+				if(kdmfi_has_featured_image( 'featured-image-2', $post->ID )) {
+					$thumbnail = kdmfi_get_featured_image_src( 'featured-image-2', 'thumbnail-size-250x117' );			
+					$image = '<img src="'.esc_url( $thumbnail ).'" class="img-fluid" width="250" height="227" alt="Visitarians">';	
+				} else if ( has_post_thumbnail($post->ID) ){
 					$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x117' ); 
-					$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';
-					
+					$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';				
 				}
+			
 				$total = $loop_event->post_count;
 				$rating = average_rating(get_the_ID());?>
 				<li>

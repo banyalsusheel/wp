@@ -32,13 +32,19 @@
 				<!-- <span class="event-date">Feb 22</span> -->
 			</div>
 
-			<?php if ( has_post_thumbnail($post->ID) ) {
+
+			<?php 
+			$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">';
+			if(kdmfi_has_featured_image( 'featured-image-2', $post->ID )) {
+				$thumbnail = kdmfi_get_featured_image_src( 'featured-image-2', 'thumbnail-size-250x117' );			
+				$image = '<img src="'.esc_url( $thumbnail ).'" class="img-fluid" width="250" height="117" alt="Visitarians">';	
+			} else if ( has_post_thumbnail($post->ID) ){
 				$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x117' ); 
-				?>
-				<img src="<?php echo esc_url( $thumbnail[0] )?>"  class="img-fluid" width="<?php echo $thumbnail[1]?>" height="<?php echo $thumbnail[2]?>" alt="Visitarians">
-			<?php } else { ?>
-				<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/event1.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">
-			<?php } ?>
+				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';				
+			}
+			?>
+
+			<?php echo $image;?>
 		</li>
 	<?php endwhile;?>
 	<?php wp_reset_query();?>

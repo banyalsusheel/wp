@@ -8,7 +8,7 @@ function pr($arr){
 
 add_image_size('thumbnail-size-250x117', 250, 117, true);
 add_image_size('thumbnail-size-250x227', 250, 227, true);
-add_image_size('thumbnail-size-100x64', 100, 64, true);
+add_image_size('thumbnail-size-100x91', 100, 91, true);
 add_image_size('thumbnail-size-769x433', 769, 433, true);
 
 add_filter('nav_menu_link_attributes', 'wpse156165_menu_add_class', 10, 3);
@@ -606,9 +606,14 @@ function mycustomtheme_remove_myposttype_row_actions($action) {
     return $action;
 }
 
-remove_filter('the_content', 'em_content');
-remove_filter('the_content', 'EM_Location_Post::the_content');
-remove_filter('the_content', 'EM_Event_Post::the_content');
+add_action( 'init', 'changeActions' );
+function changeActions(){    
+    foreach ( array( 'the_content', 'the_title' ) as $hook ){
+        remove_filter($hook, 'em_content');
+        remove_filter($hook, 'EM_Location_Post::the_content');
+        remove_filter($hook, 'EM_Event_Post::the_content');
+    }
+}
 /**
  * JUST A TEST FUNCTION
  */

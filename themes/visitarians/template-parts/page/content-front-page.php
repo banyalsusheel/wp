@@ -43,7 +43,10 @@
 			$location_data = get_location_of_event(get_the_ID());
 			$content = substr(strip_tags($post->post_content), 0, 60);
 			$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="227" alt="Visitarians">';
-			if ( has_post_thumbnail($post->ID) ) {
+			if(kdmfi_has_featured_image( 'featured-image-2', $post->ID )) {
+				$thumbnail = kdmfi_get_featured_image_src( 'featured-image-2', 'thumbnail-size-250x227' );			
+				$image = '<img src="'.esc_url( $thumbnail ).'" class="img-fluid" width="250" height="227" alt="Visitarians">';	
+			} else if ( has_post_thumbnail($post->ID) ){
 				$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' ); 
 				$image = '<img src="'.esc_url( $thumbnail[0] ).'" class="img-fluid" width="'.$thumbnail[1].'" height="'.$thumbnail[2].'" alt="Visitarians">';
 				
@@ -87,7 +90,10 @@
 						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more">Continue Reading</a></div>
 					</div>
 				</div>
-
+				<!-- if only 2 records then close the div also -->
+				<?php if ($i == $total){?>
+					</div>
+				<?php }?>
 				<?php if ($i == 3 || $i == 5){?>
 					</div>
 				<?php } else if($total < 5 && $i==4){?>
@@ -162,7 +168,10 @@
 						<div class="text-right"><a href="<?php echo esc_url( get_permalink() )?>" title="Continue Reading" class="read-more">Continue Reading</a></div>
 					</div>
 				</div>
-
+				<!-- if only 2 records then close the div also -->
+				<?php if ($i == $total){?>
+					</div>
+				<?php }?>
 				<?php if ($i == 3 || $i == 5){?>
 					</div>
 				<?php } else if($total < 5 && $i==4){?>
@@ -173,3 +182,4 @@
 		}?>
 		<?php wp_reset_query();?>	
 	</div>	<!-- end middle content area -->
+</div>

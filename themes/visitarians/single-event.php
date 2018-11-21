@@ -34,7 +34,7 @@ get_header(); ?>
 					$event_organizer = get_post_meta(get_the_ID(), 'event_organizer', true);
 					?>
 					<div class="featured-image-2"><img src="<?php echo $featured_image ?>"></div>
-					<div> Organizer : <?php echo $event_organizer;?></div>
+					<div class="orgnizer-div"><i class="fa fa-user-o fa-icon"></i> <b>Organizer :</b> <span class="fa-icon"><?php echo $event_organizer;?></span></div>
 					<?php
 					// CATEGORIES
 					$categories = get_categories_of_posttype($post->ID, 'event-categories');
@@ -64,7 +64,8 @@ get_header(); ?>
 
 		        <!-- CONTENT -->
 		        <div class="event-content">
-					<?php the_content();?>
+					<?php changeActions();
+					the_content();?>
 		        </div>
 				<div class="social-share-btns">Share this <?php echo sharethis_inline_buttons(); ?></div>
 				
@@ -126,11 +127,13 @@ get_header(); ?>
 											<?php if ( has_post_thumbnail($post->ID) ) {
 												$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail-size-250x227' );
 												?>
-												<div class="event-img">
+												<div class="image-box event-img">
 													<img src="<?php echo esc_url( $thumbnail[0] );?>" class="img-fluid" alt="" width="200" height="227">
 												</div>
 											<?php } else{ ?>
+											<div class="image-box">
 												<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">
+											</div>
 											<?php } ?>	
 											</div>
 										</div>
@@ -170,4 +173,12 @@ get_header(); ?>
 			<?php  endwhile; // End of the loop.
 			?>
 	</div>
-<?php get_footer();
+<?php get_footer();?>
+<?php /*$f = get_filters_for( 'the_content' );
+pr($f);
+remove_filter('the_content', 'em_content', 10);
+remove_filter('the_content', 'EM_Location_Post::the_content', 10);
+remove_filter('the_content', 'EM_Event_Post::the_content', 10);
+echo "<hr><hr>";
+pr($f);*/
+?>
