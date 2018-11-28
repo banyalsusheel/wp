@@ -56,7 +56,7 @@ get_header(); ?>
 						<div class="event-location"><i class="fa fa-map-marker fa-icon" aria-hidden="true"></i> <?php echo $location_data['location'];?></div> <span class="separater">|</span> 
 					<?php } ?>
 					<div class="event-dates">
-						<i class="fa fa-calendar-check-o fa-icon" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($_event_start_local))?> - <?php echo date('d M Y', strtotime($_event_end_local))?> <?php echo date('H:i A', strtotime($_event_start_local))?> &nbsp; | &nbsp; 
+						<i class="fa fa-calendar-check-o fa-icon" aria-hidden="true"></i> <?php echo date('d M Y h:i A', strtotime($_event_start_local))?>  - <?php echo date('d M Y h:i A', strtotime($_event_end_local))?>  &nbsp; | &nbsp; 
 					</div>
 					<div class="event-rating"> <?php echo average_rating(get_the_ID());?></div>
 				</div>
