@@ -755,3 +755,22 @@ function get_filters_for($hook = '') {
     // Important! Return all featured images
     return $featured_images;
   });
+
+
+  function my_wpcf7_validate_text( $result, $tag ) {
+    $type = $tag['type'];
+    $name = $tag['name'];
+    $value = $_POST[$name] ;
+    if ( strpos( $name , 'your-name' ) !== false ){
+        $regex = '/^[a-zA-Z ]+$/';
+        $Valid = preg_match($regex,  $value, $matches );
+        if ( $Valid > 0 ) {
+        } else {
+            $result->invalidate( $tag, "Name is not valid.") ;
+        }
+    }
+    return $result;
+}
+add_filter( 'wpcf7_validate_text*', 'my_wpcf7_validate_text' , 10, 2 );
+
+

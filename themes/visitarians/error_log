@@ -1,0 +1,13 @@
+[21-Nov-2018 15:51:57 UTC] PHP Fatal error:  Cannot redeclare remove_filter() (previously declared in /home/c5rsderka8iw/public_html/wp-includes/plugin.php:271) in /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/functions.php on line 616
+[21-Nov-2018 15:51:59 UTC] PHP Fatal error:  Cannot redeclare remove_filter() (previously declared in /home/c5rsderka8iw/public_html/wp-includes/plugin.php:271) in /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/functions.php on line 616
+[21-Nov-2018 15:52:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_location_of_place() in /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/sidebar-popular-places.php:20
+Stack trace:
+#0 /home/c5rsderka8iw/public_html/wp-includes/template.php(688): require_once()
+#1 /home/c5rsderka8iw/public_html/wp-includes/template.php(647): load_template('/home/c5rsderka...', true)
+#2 /home/c5rsderka8iw/public_html/wp-includes/general-template.php(110): locate_template(Array, true)
+#3 /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/sidebar-right.php(3): get_sidebar('popular-places')
+#4 /home/c5rsderka8iw/public_html/wp-includes/template.php(688): require_once('/home/c5rsderka...')
+#5 /home/c5rsderka8iw/public_html/wp-includes/template.php(647): load_template('/home/c5rsderka...', true)
+#6 /home/c5rsderka8iw/public_html/wp-includes/general-template.php(110): locate_template(Array, true)
+#7 /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/single-event.php(23): get_sidebar('right')
+#8 /home/c5rsderka8iw/public_ in /home/c5rsderka8iw/public_html/wp-content/themes/visitarians/sidebar-popular-places.php on line 20
