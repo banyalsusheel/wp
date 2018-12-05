@@ -67,8 +67,7 @@ endif;
 		<!-- meta character set -->
 		
 		<!-- Site Title -->
-		<title>Visitarians</title>
-
+		
 			<!--
 			CSS
 			============================================= -->

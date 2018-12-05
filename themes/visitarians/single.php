@@ -13,7 +13,7 @@
 get_header(); ?>
 
 <?php get_sidebar('left');?>
-<?php get_sidebar('right');?>
+
 <div class="middle-content">
 
 			<?php
@@ -35,5 +35,6 @@ get_header(); ?>
 			endwhile; // End of the loop.
 			?>
 	</div>
+	<?php get_sidebar('right');?>
 
 <?php get_footer();

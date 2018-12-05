@@ -18,7 +18,7 @@ get_header(); ?>
 	<?php get_sidebar('left-place-filters');?>
 	<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 </aside>
-<?php get_sidebar('right');?>
+
 	<div class="middle-content">	
 		<?php
 			/* Start the Loop */
@@ -131,4 +131,5 @@ get_header(); ?>
 			<?php endwhile; // End of the loop.
 			?>
 	</div>
+	<?php get_sidebar('right');?>
 <?php get_footer();

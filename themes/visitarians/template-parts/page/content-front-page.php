@@ -9,7 +9,7 @@
  */
 ?>
 	<?php get_sidebar('left');?>
-	<?php get_sidebar('right');?>
+
 	
 	<!-- Start Middle content Area -->
 	<div class="middle-content">	
@@ -95,7 +95,7 @@
 					</div>
 				<?php }?>
 				<?php if ($i == 3 || $i == 5){?>
-					</div>
+				
 				<?php } else if($total < 5 && $i==4){?>
 					</div>
 				<?php } ?>
@@ -182,4 +182,5 @@
 		}?>
 		<?php wp_reset_query();?>	
 	</div>	<!-- end middle content area -->
+		<?php get_sidebar('right');?>
 </div>

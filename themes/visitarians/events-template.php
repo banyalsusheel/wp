@@ -6,7 +6,7 @@ get_header(); ?>
 		<?php get_sidebar('left-location-filters');?>
 		<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 	</aside>
-	<?php get_sidebar('right-events');?>
+	
 	<div class="middle-content">
 		<h2 class="main-heading">Upcoming Events <span>List</span></h2>
 		<ul>
@@ -81,6 +81,6 @@ get_header(); ?>
 		<?php wp_pagenavi( array( 'query' => $loop_event ) );?>
 		<?php wp_reset_query(); ?>
 	</div>
-	
+	<?php get_sidebar('right-events');?>
 
 <?php get_footer();

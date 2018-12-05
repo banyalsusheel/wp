@@ -19,7 +19,7 @@ get_header(); ?>
 	<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 </aside>
 
-<?php get_sidebar('right');?>
+
 	<div class="middle-content">	
 		<?php
 			/* Start the Loop */
@@ -119,4 +119,5 @@ get_header(); ?>
 		    </div>
 		<?php endwhile; // End of the loop.?>
 	</div>
+	<?php get_sidebar('right');?>
 <?php get_footer();

@@ -20,7 +20,7 @@ $cat_image = z_taxonomy_image_url($cat_id);
 	<?php get_sidebar('left-event-filters');?>		
 	<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 </aside>
-<?php get_sidebar('right');?>
+
 	<div class="middle-content">	
 		<h2 class="main-heading"><?php single_cat_title(); ?> <span>Events</span></h2>
 		<ul>
@@ -108,6 +108,7 @@ $cat_image = z_taxonomy_image_url($cat_id);
 		<?php wp_reset_query(); ?>
 		
 	</div>
+	<?php get_sidebar('right');?>
 <?php get_footer();
 
 

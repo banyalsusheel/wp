@@ -19,8 +19,6 @@ $cat_image = z_taxonomy_image_url($cat_id);
 	<?php get_sidebar('left-place-filters');?>
 	<?php dynamic_sidebar( 'Sidebar-left-banners' ); ?>
 </aside>
-<?php get_sidebar('right');?>
-
 	<div class="middle-content">	
 		<h2 class="main-heading"><?php single_cat_title(); ?> <span>Places</span></h2>	
 		
@@ -81,6 +79,7 @@ $cat_image = z_taxonomy_image_url($cat_id);
 		<?php wp_pagenavi( array( 'query' => $loop_place ) );?>
 		<?php wp_reset_query(); ?>
 	</div>
+	<?php get_sidebar('right');?>
 <?php get_footer();
 
 

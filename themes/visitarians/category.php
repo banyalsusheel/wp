@@ -15,7 +15,7 @@ $cat_id = get_queried_object_id();
 ?>
 
 <?php get_sidebar('left');?>
-<?php get_sidebar('right');?>
+
 	<div class="middle-content">	
 
 		<p>Category: <?php single_cat_title(); ?></p>
@@ -35,6 +35,7 @@ $cat_id = get_queried_object_id();
 
 			endforeach;?>
 		</div>
+		<?php get_sidebar('right');?>
 <?php get_footer();
 
 
