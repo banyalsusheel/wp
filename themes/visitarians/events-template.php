@@ -16,7 +16,7 @@ get_header(); ?>
 		    $paged= (get_query_var('paged' )) ? get_query_var('paged'):1;
 			$args = array(
 				'paged' => $paged,
-				'posts_per_page'=> 4,
+				'posts_per_page'=> 10,
 				'post_type'  => 'event',
 				'orderby' => 'ID',
 				'order'   => 'DESC',

@@ -61,13 +61,13 @@ endif;
 		<!-- Favicon-->
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/fav.png">
 		<!-- Meta Description -->
-		
+
 		<!-- Meta Keyword -->
-		
+
 		<!-- meta character set -->
-		
+
 		<!-- Site Title -->
-		
+
 			<!--
 			CSS
 			============================================= -->
@@ -76,6 +76,15 @@ endif;
 			<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/owl.carousel.css">
 			<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/flexslider.css">
 			<?php wp_head();?>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123966348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123966348-1');
+</script>
 		</head>
 		<body <?php body_class();?>>
 			<!-- start banner Area -->
@@ -94,9 +103,9 @@ endif;
 							  	<?php if (has_nav_menu('top')): ?>
 							  		<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 										<?php
-										$defaults = array('container' => '', 'menu_class' => 'navbar-nav', 'menu_id' => 'top-menu', 'theme_location' => 'top');
-										wp_nav_menu($defaults);
-										?>
+$defaults = array('container' => '', 'menu_class' => 'navbar-nav', 'menu_id' => 'top-menu', 'theme_location' => 'top');
+wp_nav_menu($defaults);
+?>
 									</div>
 							  	<?php endif;?>
 
@@ -112,40 +121,37 @@ endif;
 			<?php if ((twentyseventeen_is_frontpage() || (is_home() && is_front_page()))) {?>
 
 				<section class="default-banner active-blog-slider">
-
-				<?php $slider_images = get_featured_events_places(5);?>
-				<!-- Place somewhere in the <body> of your page -->
+					<?php $slider_images = get_featured_events_places(5);?>
+					<!-- Place somewhere in the <body> of your page -->
 					<div class="flexslider" id="event_slider">
 						<ul class="slides">
 							<?php foreach ($slider_images as $value) {?>
 								<li>
 									<a href="<?php echo $value['link'] ?>" title="<?php echo $value['title'] ?>">
 									<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-										
-											<!-- div class="row fullscreen justify-content-center inner-banner align-items-center">
-												
-													<div class="banner-content text-center">
-													<h1 class="text-uppercase text-white"><?php //echo $value['title'] ?></h1>
-													<a href="<?php //echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a>
-													</div>
-													</div -->
+										<div class="row fullscreen justify-content-center inner-banner align-items-center">
+											<div class="banner-content text-center">
+												<h1 class="text-uppercase text-white <?php echo $value['title-class'] ?>"><?php echo $value['title'] ?></h1>
+												<!--a href="<?php // echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a-->
+											</div>
+										</div>
 									<img src="<?php echo $value['image_full'] ?>" />
 									</a>
-				
+
 								</li>
 							<?php }?>
 						</ul>
-						</div>
+					</div>
 
-						<div class="flexslider carousel" id="event_slider_thumbnail" >
-							<ul class="slides">
-							<?php foreach ($slider_images as $value) {?>
-								<li class="<?php echo $value['class'] ?>" >
-									<img src="<?php echo $value['image_thumb'] ?>" />
-								</li>
-							<?php }?>
-							</ul>
-						</div>
+					<div class="flexslider carousel" id="event_slider_thumbnail" >
+						<ul class="slides">
+						<?php foreach ($slider_images as $value) {?>
+							<li class="<?php echo $value['class'] ?>" >
+								<img src="<?php echo $value['image_thumb'] ?>" />
+							</li>
+						<?php }?>
+						</ul>
+					</div>
 
 				</section>
 
@@ -155,9 +161,8 @@ endif;
 				$cat_obj = get_term($cat_id);
 				$style = "style='background:#fdb101'";
 				if (!empty($cat_image)) {
-					$style = "style='background:url(" . esc_url($cat_image) . ");background-size: cover;'";
-					?>
-				<?php }?>
+        			$style = "style='background:url(" . esc_url($cat_image) . ");background-size: cover;'";
+				}?>
 
 				<section class="default-banner">
 					<div class="relative" <?php echo $style; ?>>
@@ -167,7 +172,6 @@ endif;
 								<div class="col-md-10 col-12">
 									<div class="banner-content text-center">
 										<h1 class="text-uppercase text-white"><?php echo $cat_obj->name; ?></h1>
-
 									</div>
 								</div>
 
@@ -176,31 +180,28 @@ endif;
 					</div>
 				</section>
 
-			<?php } else {?>
+			<?php } else { // ALL PAGES/POSTS/CUSTOM-POSTSTYPES?>
 				<section class="default-banner">
 					<?php $style = "style='background:#fdb101'";
 					if (has_post_thumbnail($post->ID)) {
 						$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'twentyseventeen-featured-image');
 						$style = 'style="background: url( ' . esc_url($thumbnail[0]) . ' );background-size: cover;"';
-					}
-					?>
+					}?>
 					<div class="relative" <?php echo $style; ?>>
 						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 						<div class="container">
 							<div class="row fullscreen justify-content-center inner-banner align-items-center">
 								<div class="col-md-10 col-12">
 									<div class="banner-content text-center">
-										<h1 class="text-uppercase text-white"><?php the_title()?></h1>
+										<h1 class="text-uppercase text-white <?php echo  get_post_type()?>"><?php the_title()?></h1>
 										<h4 class="text-white text-uppercase">
 											<?php $tag_line = get_post_meta(get_the_ID(), 'tag_line', true);
 											if (!empty($tag_line)) {
 												echo $tag_line;
-											}
-											?>
+											}?>
 										</h4>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>

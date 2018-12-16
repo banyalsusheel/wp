@@ -40,13 +40,11 @@ get_header(); ?>
 					$location_data = get_location_of_place(get_the_ID());
 					// print_r($location_data);
 					if(!empty($location_data['location'])){?>
-						<div class="event-location"><i class="fa fa-map-marker location-icon" aria-hidden="true"></i> <?php echo $location_data['location'];?></div> <span class="separater">|</span> 
+						<div class="event-location"><i class="fa fa-map-marker location-icon" aria-hidden="true"></i> <?php echo $location_data['location'];?></div> <span class="separater">|</span> <span class="place-category"><?php echo $categories['categories']; ?></span><span class="separater">|</span> 
 					<?php } ?>
 				   
 					<div class="place-rating"> <?php echo average_rating(get_the_ID());?></div>
 				</div>
-		        <div class="place-category"><?php echo $categories['categories']; ?></div>
-
 		        <!-- CONTENT -->
 		        <div class="place-content">
 					<?php the_content();?>

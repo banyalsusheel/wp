@@ -173,13 +173,5 @@ get_header(); ?>
 			<?php  endwhile; // End of the loop.
 			?>
 	</div>
-	<?php get_sidebar('right');?>
+	<?php get_sidebar('right-events');?>
 <?php get_footer();?>
-<?php /*$f = get_filters_for( 'the_content' );
-pr($f);
-remove_filter('the_content', 'em_content', 10);
-remove_filter('the_content', 'EM_Location_Post::the_content', 10);
-remove_filter('the_content', 'EM_Event_Post::the_content', 10);
-echo "<hr><hr>";
-pr($f);*/
-?>

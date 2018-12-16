@@ -23,15 +23,16 @@
 	while ( $loop_event->have_posts()) : $loop_event->the_post(); ?>
 		
 		<?php $location_data = get_location_of_event($post->ID);?>
-		<li>
-			<div class="event-place-text">
-				<span class="event-name"><a href="<?php the_permalink()?>"><?php the_title()?></a></span>
+		<li><a href="<?php the_permalink()?>">
+			<div class="event-place-text">				
+				<span class="event-name"><?php the_title()?></span>
 				 <?php if(!empty($location_data)){?>
 				 	<span class="place-name"><?php echo $location_data['location'];?></span>
 		       	<?php } ?>
 				<!-- <span class="event-date">Feb 22</span> -->
+				
 			</div>
-
+			
 
 			<?php 
 			$image = '<img src="'.get_stylesheet_directory_uri().'/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">';
@@ -45,6 +46,7 @@
 			?>
 
 			<?php echo $image;?>
+			
 		</li>
 	<?php endwhile;?>
 	<?php wp_reset_query();?>

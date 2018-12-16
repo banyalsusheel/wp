@@ -679,6 +679,7 @@ function get_filters_for($hook = '') {
 		$data[$i]['title'] = get_the_title();		
 		$data[$i]['link'] = get_the_permalink();
 		$data[$i]['class'] = 'visitarian-event-slider';				
+		$data[$i]['title-class'] = 'event-title';				
 		$i++;
 	}
 	wp_reset_query();
@@ -715,7 +716,8 @@ function get_filters_for($hook = '') {
 		}	
 		$data[$i]['title'] = get_the_title();		
 		$data[$i]['link'] = get_the_permalink();		
-		$data[$i]['class'] = 'visitarian-place-slider';		
+        $data[$i]['class'] = 'visitarian-place-slider';	
+        $data[$i]['title-class'] = 'place-title';					
 		$i++;
 	}
 	wp_reset_query();
@@ -774,3 +776,18 @@ function get_filters_for($hook = '') {
 add_filter( 'wpcf7_validate_text*', 'my_wpcf7_validate_text' , 10, 2 );
 
 
+function defer_parsing_of_js ( $url ) {
+    if ( FALSE === strpos( $url, '.js' ) ) return $url;
+    if ( strpos( $url, 'jquery.js' ) ) return $url;
+        return "$url' defer ";
+    }
+add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
+
+//* TN - Remove Query String from Static Resources
+function remove_css_js_ver( $src ) {
+    if( strpos( $src, '?ver=' ) )
+    $src = remove_query_arg( 'ver', $src );
+    return $src;
+    }
+add_filter( 'style_loader_src', 'remove_css_js_ver', 10, 2 );
+add_filter( 'script_loader_src', 'remove_css_js_ver', 10, 2 );

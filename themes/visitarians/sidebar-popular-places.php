@@ -18,9 +18,9 @@
 	$loop = new WP_Query( $args );
 	while ( $loop->have_posts()) : $loop->the_post(); ?>
 		<?php $location_data = get_location_of_place($post->ID);?>
-		<li>
+		<li><a href="<?php the_permalink()?>">
 			<div class="event-place-text">
-				<span class="event-name"><a href="<?php the_permalink()?>"><?php the_title()?></a></span>
+				<span class="event-name"><?php the_title()?></span>
 				 <?php if(!empty($location_data)){?>
 				 	<span class="place-name"><?php echo $location_data['location'];?></span>
 		       	<?php } ?>
@@ -34,7 +34,7 @@
 			<?php } else { ?>
 				<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/default.jpg"  class="img-fluid" width="250" height="117" alt="Visitarians">
 			<?php } ?>
-			
+			</a>
 		</li>
 	<?php endwhile;?>
 	<?php wp_reset_query();?>

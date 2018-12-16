@@ -13,7 +13,7 @@
 	
 	<!-- Start Middle content Area -->
 	<div class="middle-content">	
-		<h2 class="main-heading">Upcoming <span>Events</span></h2>
+		<h1 class="main-heading">Upcoming <span>Events</span></h1>
 		<?php 
 		$current_time = current_time( 'timestamp' );
 	    $current_date = date( 'Y-m-d H:i:s', $current_time );
@@ -81,7 +81,7 @@
 								</div>
 							</div>
 							<div class="txt">
-								<span class="event-name"><?php the_title();?></span>
+								<a href="<?php echo esc_url( get_permalink() )?>" title="<?php the_title();?>" ><span class="event-name"><?php the_title();?></span></a>
 								<span class="event-date"><?php echo $dates;?></span>
 								<span class="event-type"><?php echo $categories['categories_link']; ?></span>
 							</div>
@@ -92,10 +92,10 @@
 				</div>
 				<!-- if only 2 records then close the div also -->
 				<?php if ($i == $total){?>
-					</div>
+					
 				<?php }?>
 				<?php if ($i == 3 || $i == 5){?>
-				
+				</div>
 				<?php } else if($total < 5 && $i==4){?>
 					</div>
 				<?php } ?>
@@ -160,7 +160,7 @@
 								</div>
 							</div>
 							<div class="txt">
-								<span class="event-name"><?php the_title();?></span>
+								<a href="<?php echo esc_url( get_permalink() )?>" title="<?php the_title();?>"><span class="event-name"><?php the_title();?></span></a>
 								<span class="event-type"><?php echo $categories['categories_link']; ?></span>
 							</div>
 						</div>
@@ -170,7 +170,7 @@
 				</div>
 				<!-- if only 2 records then close the div also -->
 				<?php if ($i == $total){?>
-					</div>
+					
 				<?php }?>
 				<?php if ($i == 3 || $i == 5){?>
 					</div>
@@ -183,4 +183,3 @@
 		<?php wp_reset_query();?>	
 	</div>	<!-- end middle content area -->
 		<?php get_sidebar('right');?>
-</div>
