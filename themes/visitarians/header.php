@@ -131,7 +131,7 @@ wp_nav_menu($defaults);
 									<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 										<div class="row fullscreen justify-content-center inner-banner align-items-center">
 											<div class="banner-content text-center">
-												<h1 class="text-uppercase text-white <?php echo $value['title-class'] ?>"><?php echo $value['title'] ?></h1>
+												<div class="text-uppercase text-white <?php echo $value['title-class'] ?>"><?php echo $value['title'] ?></div>
 												<!--a href="<?php // echo $value['link'] ?>" class="text-uppercase header-btn">Discover Now</a-->
 											</div>
 										</div>

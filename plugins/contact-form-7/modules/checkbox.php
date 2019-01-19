@@ -80,17 +80,39 @@ function wpcf7_checkbox_form_tag_handler( $tag ) {
 		}
 	}
 
-	$default_choice = $tag->get_default_option( null, array(
-		'multiple' => $multiple,
-	) );
+	$defaults = array();
+
+	$default_choice = $tag->get_default_option( null, 'multiple=1' );
+
+	foreach ( $default_choice as $value ) {
+		$key = array_search( $value, $values, true );
+
+		if ( false !== $key ) {
+			$defaults[] = (int) $key + 1;
+		}
+	}
+
+	if ( $matches = $tag->get_first_match_option( '/^default:([0-9_]+)$/' ) ) {
+		$defaults = array_merge( $defaults, explode( '_', $matches[1] ) );
+	}
+
+	$defaults = array_unique( $defaults );
 
 	$hangover = wpcf7_get_hangover( $tag->name, $multiple ? array() : '' );
 
 	foreach ( $values as $key => $value ) {
+		$class = 'wpcf7-list-item';
+
+		$checked = false;
+
 		if ( $hangover ) {
-			$checked = in_array( $value, (array) $hangover, true );
+			if ( $multiple ) {
+				$checked = in_array( $value, (array) $hangover, true );
+			} else {
+				$checked = ( $hangover === $value );
+			}
 		} else {
-			$checked = in_array( $value, (array) $default_choice, true );
+			$checked = in_array( $key + 1, (array) $defaults );
 		}
 
 		if ( isset( $labels[$key] ) ) {
@@ -127,7 +149,6 @@ function wpcf7_checkbox_form_tag_handler( $tag ) {
 			$tabindex += 1;
 		}
 
-		$class = 'wpcf7-list-item';
 		$count += 1;
 
 		if ( 1 == $count ) {

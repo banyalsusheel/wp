@@ -2163,7 +2163,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.default-banner h1 {
+.default-banner h1,.text-uppercase.text-white {
   font-family: 'futurist_extraheavyregular';
   color: #222;
   font-size: 50px;
@@ -2178,31 +2178,31 @@ h1, h2, h3, h4, h5, h6 {
 	font-size:24px;
 	letter-spacing:10px;
 	}
-.default-banner h1 span {
+.default-banner h1 span,.text-uppercase.text-white span {
   text-transform: uppercase;
   font-weight: 700;
 }
 
 @media (max-width: 991px) {
-  .default-banner h1 {
+  .default-banner h1,.text-uppercase.text-white {
     font-size: 36px;
   }
 }
 
 @media (max-width: 991px) {
-  .default-banner h1 br {
+  .default-banner h1 br, .text-uppercase.text-white br {
     display: none;
   }
 }
 
 @media (max-width: 1199px) {
-  .default-banner h1 {
+  .default-banner h1,.text-uppercase.text-white {
     font-size: 45px;
   }
 }
 
 @media (max-width: 414px) {
-  .default-banner h1 {
+  .default-banner h1,.text-uppercase.text-white {
     font-size: 40px;
   }
 }
@@ -2869,7 +2869,8 @@ form{overflow:hidden;}
 .visit-event-place li .event-place-text .place-name{display:block; font-size:18px; font-family: 'brandon_grotesquebold';}
 .visit-event-place li .event-place-text .event-date{display:block; font-size:16px; font-family: 'brandon_grotesquemedium';}
 .visit-event-place li .event-place-text a{color:#fff;}
-.main-heading{font-size:30px; color:#ff681a; margin-bottom:15px; font-family: 'brandon_grotesquemedium';}
+.main-heading, .mainHeading{font-size:28px; color:#ff681a; margin-bottom:15px; font-family: 'brandon_grotesquemedium';}
+.mainHeading{color:#000; margin-bottom:25px;}
 .main-heading span{color:#000; position:relative; font-family: 'brandon_grotesquelight';}
 .main-heading span:after{width:75px; height:1px; content:'';background:#000; position:absolute; left:100%; margin: 20px 0 0 10px;}
 .middle-content{padding:0 30px; font-weight:400;margin:0px; float:left; width:calc(100% - 500px);}
@@ -3072,7 +3073,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb901', end
 .error-404 .page-content {margin: -24% 0 0;  padding: 0 22%; color:#294752; font-size:20px;}
 .error-404 .headig{margin:0 0 20px; font-size:60px; font-family: 'brandon_grotesquemedium'; color:#ff661c;}
 .back-btn{font-family: 'brandon_grotesquemedium'; color:#ff661c; padding:10px 20px; border:3px solid #ff661c; border-radius:5px; margin:10px 0 30px; display:inline-block;}
-
+.banner-content .event-title,.text-uppercase.text-white.event, .detail-pageTop .place-title{display:none;}
 
 
 /* responsive css */
@@ -3089,7 +3090,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb901', end
 }
 
 @media (max-width: 1140px) {
-	.main-heading {font-size: 20px;}
+	.main-heading, .mainHeading {font-size: 20px;}
 	.visit-event-place li .event-place-text .event-name {font-size: 20px; margin:0px;}
 	.visit-event-place li .event-place-text .place-name{font-size:13px;}
 	.visit-event-place li .event-place-text .event-date{font-size:11px;}

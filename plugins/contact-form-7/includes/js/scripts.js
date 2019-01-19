@@ -46,16 +46,12 @@
 		var $form = $( form );
 
 		$form.submit( function( event ) {
-			if ( ! wpcf7.supportHtml5.placeholder ) {
-				$( '[placeholder].placeheld', $form ).each( function( i, n ) {
-					$( n ).val( '' ).removeClass( 'placeheld' );
-				} );
+			if ( typeof window.FormData !== 'function' ) {
+				return;
 			}
 
-			if ( typeof window.FormData === 'function' ) {
-				wpcf7.submit( $form );
-				event.preventDefault();
-			}
+			wpcf7.submit( $form );
+			event.preventDefault();
 		} );
 
 		$( '.wpcf7-submit', $form ).after( '<span class="ajax-loader"></span>' );
@@ -197,6 +193,10 @@
 
 		$( '.ajax-loader', $form ).addClass( 'is-active' );
 
+		$( '[placeholder].placeheld', $form ).each( function( i, n ) {
+			$( n ).val( '' );
+		} );
+
 		wpcf7.clearResponse( $form );
 
 		var formData = new FormData( $form.get( 0 ) );
@@ -308,15 +308,11 @@
 				$form.each( function() {
 					this.reset();
 				} );
-
-				wpcf7.toggleSubmit( $form );
 			}
 
-			if ( ! wpcf7.supportHtml5.placeholder ) {
-				$form.find( '[placeholder].placeheld' ).each( function( i, n ) {
-					$( n ).val( $( n ).attr( 'placeholder' ) );
-				} );
-			}
+			$form.find( '[placeholder].placeheld' ).each( function( i, n ) {
+				$( n ).val( $( n ).attr( 'placeholder' ) );
+			} );
 
 			$message.html( '' ).append( data.message ).slideDown( 'fast' );
 			$message.attr( 'role', 'alert' );

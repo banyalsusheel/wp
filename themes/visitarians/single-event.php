@@ -26,7 +26,7 @@ get_header(); ?>
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();?>
 				<div class="detail-pageTop">
-					<div class="event-title"><?php the_title(); ?></div>
+					<h1 class="event-title"><?php the_title(); ?></h1>
 
 					<?php
 					// Featured image 2

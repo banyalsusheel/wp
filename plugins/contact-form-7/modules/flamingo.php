@@ -12,7 +12,8 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		return;
 	}
 
-	if ( $contact_form->in_demo_mode() ) {
+	if ( $contact_form->in_demo_mode()
+	|| $contact_form->is_true( 'do_not_store' ) ) {
 		return;
 	}
 
@@ -27,10 +28,6 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 	$submission = WPCF7_Submission::get_instance();
 
 	if ( ! $submission || ! $posted_data = $submission->get_posted_data() ) {
-		return;
-	}
-
-	if ( $submission->get_meta( 'do_not_store' ) ) {
 		return;
 	}
 
