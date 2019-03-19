@@ -2870,9 +2870,12 @@ form{overflow:hidden;}
 .visit-event-place li .event-place-text .event-date{display:block; font-size:16px; font-family: 'brandon_grotesquemedium';}
 .visit-event-place li .event-place-text a{color:#fff;}
 .main-heading, .mainHeading{font-size:28px; color:#ff681a; margin-bottom:15px; font-family: 'brandon_grotesquemedium';}
-.mainHeading{color:#000; margin-bottom:25px;}
+.main-content{text-align:center; max-width:800px; margin:0px auto 40px;}
+.mainHeading{color:#ff681a; margin-bottom:25px; }
+.mainHeading span{position:relative;}
+.mainHeading span:before{width:75px; height:1px; content:'';background:#000; position:absolute; right:100%; margin: 20px 10px 0 0px;}
 .main-heading span{color:#000; position:relative; font-family: 'brandon_grotesquelight';}
-.main-heading span:after{width:75px; height:1px; content:'';background:#000; position:absolute; left:100%; margin: 20px 0 0 10px;}
+.main-heading span:after,.mainHeading span:after{width:75px; height:1px; content:'';background:#000; position:absolute; left:100%; margin: 20px 0 0 10px;}
 .middle-content{padding:0 30px; font-weight:400;margin:0px; float:left; width:calc(100% - 500px);}
 .middle-content .main-box{background:#fff; border-radius:15px; overflow:hidden; width:100%; margin-bottom:30px; border: 1px solid #dedede;}
 .middle-content .main-box .image{width:250px; float: left; vertical-align:top;}

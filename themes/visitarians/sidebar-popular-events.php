@@ -47,7 +47,7 @@
 
 			<?php echo $image;?>
 			
-		</li>
+		</a></li>
 	<?php endwhile;?>
 	<?php wp_reset_query();?>
 
