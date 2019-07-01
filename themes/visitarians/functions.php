@@ -777,10 +777,14 @@ add_filter( 'wpcf7_validate_text*', 'my_wpcf7_validate_text' , 10, 2 );
 
 
 function defer_parsing_of_js ( $url ) {
-    if ( FALSE === strpos( $url, '.js' ) ) return $url;
-    if ( strpos( $url, 'jquery.js' ) ) return $url;
-        return "$url' defer ";
+    if (!is_admin()){
+        if ( FALSE === strpos( $url, '.js' ) ) return $url;
+        if ( strpos( $url, 'jquery.js' ) ) return $url;
+            return "$url' defer ";
+    }else{
+        return $url;
     }
+}
 add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
 
 //* TN - Remove Query String from Static Resources
