@@ -207,6 +207,7 @@ function average_rating($post_id) {
 function filter_plugin_updates($value) {
     unset($value->response['wp-post-comment-rating/wpcr-comment-rating.php']);
     unset($value->response['events-manager/events-manager.php']);
+    unset($value->response['contact-form-7/wp-contact-form-7.php']);
     return $value;
 }
 add_filter('site_transient_update_plugins', 'filter_plugin_updates');
@@ -795,3 +796,15 @@ function remove_css_js_ver( $src ) {
     }
 add_filter( 'style_loader_src', 'remove_css_js_ver', 10, 2 );
 add_filter( 'script_loader_src', 'remove_css_js_ver', 10, 2 );
+
+
+/*********remove query string *******************/
+
+function _remove_script_version( $src ){
+    $parts = explode( '?ver', $src ); 
+    return $parts[0];  
+}
+add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
+add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+    
+
